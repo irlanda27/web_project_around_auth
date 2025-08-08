@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {register} from "../../utils/auth.js";
 
 function Register({ onRegister }) {
   const [email, setEmail] = useState("");
@@ -6,7 +7,7 @@ function Register({ onRegister }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onRegister({ email, password });
+    onRegister(email, password );
   }
 
   return (

@@ -11,6 +11,7 @@ import EditProfile from "./Popup/EditProfile/EditProfile";
 import EditAvatar from "./Popup/EditAvatar/EditAvatar";
 import Card from "../Main/components/Card/Card.jsx";
 import ImagePopup from "./Popup/ImagePopup/ImagePopup";
+import Header from "../Header/Header";
 
 export default function Main({
   cards,
@@ -22,9 +23,13 @@ export default function Main({
   setPopup,
   onAddPlaceSubmit,
   handleUpdateUser,
+  loggedIn,
+  userEmail,
+  onSignOut,
 }) {
+
+
   const { currentUser } = useContext(CurrentUserContext);
-  const [name, setName] = useState("test");
   const [link, setLink] = useState("");
   const newCardPopup = {
     title: "Nuevo lugar",
@@ -52,6 +57,11 @@ export default function Main({
 
   return (
     <>
+      <Header
+      email ={userEmail}
+      onSignOut={onSignOut}
+      loggedIn={loggedIn}
+      />
       <main>
         <div className="profile">
           <div className="profile__avatar">
@@ -64,7 +74,7 @@ export default function Main({
             />
             <img
               className="profile__image"
-              src={currentUser.avatar || userImage}
+              src={currentUser?.avatar || userImage}
               alt="imagen del usuario"
               onClick={() => onOpenPopup(EditAvatarPopup)}
             />
@@ -74,7 +84,7 @@ export default function Main({
               <div className="profile__name">
                 <div className="profile__edit">
                   <p id="profile-name">
-                    {currentUser.name || "Nombre de usuario"}
+                    {currentUser?.name || "Nombre de usuario"}
                   </p>
                   <button className="profile__button" id="pencil-editor">
                     <img
@@ -85,8 +95,8 @@ export default function Main({
                   </button>
                 </div>
                 <p className="profile__info-explorador" id="profile-info">
-                  {currentUser.about || "Acerca de mi"};
-                </p>
+  {(currentUser && currentUser.about) || "Acerca de mi"}
+</p>
               </div>
               <img
                 className="profile__add-button"
