@@ -11,7 +11,6 @@ import EditProfile from "./Popup/EditProfile/EditProfile";
 import EditAvatar from "./Popup/EditAvatar/EditAvatar";
 import Card from "../Main/components/Card/Card.jsx";
 import ImagePopup from "./Popup/ImagePopup/ImagePopup";
-import Header from "../Header/Header";
 
 export default function Main({
   cards,
@@ -57,11 +56,6 @@ export default function Main({
 
   return (
     <>
-      <Header
-      email ={userEmail}
-      onSignOut={onSignOut}
-      loggedIn={loggedIn}
-      />
       <main>
         <div className="profile">
           <div className="profile__avatar">

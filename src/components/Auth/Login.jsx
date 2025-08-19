@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -10,30 +11,36 @@ function Login({ onLogin }) {
   }
 
   return (
-    <div className="auth-form">
-      <h2 className="auth-form__title">Iniciar sesión</h2>
-      <form className="auth-form__form" onSubmit={handleSubmit}>
-        <input
-          type="email"
-          className="auth-form__input"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          className="auth-form__input"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button className="auth-form__button" type="submit">
-          Iniciar sesión
-        </button>
-      </form>
-    </div>
+  <div className="auth">
+    <h2 className="auth__title">Iniciar sesión</h2>
+    <form className="auth__form" onSubmit={handleSubmit}>
+      <input
+        type="email"
+        className="auth__input"
+        placeholder="Correo electrónico"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <input
+        type="password"
+        className="auth__input"
+        placeholder="Contraseña"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <button className="auth__submit" type="submit">
+        Iniciar sesión
+      </button>
+    </form>
+    <p className="auth__signin">
+      ¿No tienes cuenta?
+      <Link className="auth__signin-link" to="/signup">
+        Regístrate
+      </Link>
+    </p>
+  </div>
   );
 }
 
